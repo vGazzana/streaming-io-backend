@@ -1,0 +1,14 @@
+{
+  "name": "backend-streaming-io",
+  "packageManager": "yarn@4.2.2",
+  "scripts": {
+    "dev": "tsx watch index.ts",
+    "dev-node": "node --watch dist/index.js",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.12",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  }
+}
