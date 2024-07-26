@@ -30,7 +30,7 @@ jobs:
             ${{ runner.os }}-node-modules-
 
       - name: Yarn Install
-        run: yarn ci
+        run: yarn install --frozen-lockfile
 
       - name: Yarn Build
         run: yarn build --verbose --check-files --reporters progress --colors --force
