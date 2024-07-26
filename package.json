@@ -1,6 +1,6 @@
 {
   "name": "backend-streaming-io",
-  "packageManager": "^yarn@1.22.19",
+  "packageManager": "yarn@4.2.2",
   "scripts": {
     "dev": "tsx watch index.ts",
     "dev-node": "node --watch dist/index.js",
