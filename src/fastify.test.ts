@@ -5,7 +5,7 @@ const serverUrl = "http://localhost:3000";
 
 describe("Server Integration Test", () => {
 	beforeAll(async () => {
-		await fastify.listen({ port: 3000 });
+		await fastify.listen({ port: 9090 });
 	});
 
 	afterAll(async () => {
