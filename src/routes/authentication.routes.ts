@@ -67,6 +67,71 @@ const authenticationRoutes = {
             data: null,
           };
         return {
+          status: "error",
+          error: true,
+          message: "An unexpected error occurred",
+          errorObj: error,
+          data: null,
+        };
+      }
+    });
+    fastify.post("/register", async (request, reply) => {
+      try {
+        //gonna be a schema later
+        const { data } = request.body as {
+          data: {
+            [key: string]: string;
+          };
+        };
+
+        const { email, name, password } = data;
+
+        const emailAlreadyExists = await prisma.users.findFirst({
+          where: { email },
+        });
+
+        if (emailAlreadyExists) {
+          return reply.status(409).send({
+            status: "warning",
+            message: "Email already exists!",
+            data: null,
+          });
+        }
+
+        // gonna have SHA256 hash in password
+        const insertedUser = await prisma.users.create({
+          data: {
+            email,
+            name,
+            password,
+          },
+        });
+
+        if (!insertedUser) {
+          throw new Error("An error has occurred, please try again");
+        }
+
+        return {
+          status: "success",
+          data: {
+            user: {
+              id: insertedUser.id,
+              name: insertedUser.name,
+              email: insertedUser.email,
+            },
+          },
+        };
+      } catch (error) {
+        if (error instanceof Error)
+          return {
+            status: "error",
+            error: true,
+            message: error.message,
+            errorObj: { ...error },
+            data: null,
+          };
+        return {
+          status: "error",
           error: true,
           message: "An unexpected error occurred",
           errorObj: error,
