@@ -1,5 +1,8 @@
 {
   "name": "streaming-io-backend",
+  "engines": {
+    "node": ">=20.14"
+  },
   "scripts": {
     "dev": "tsx --watch ./src",
     "build": "tsc",

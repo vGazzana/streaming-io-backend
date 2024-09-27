@@ -1,11 +1,11 @@
 import Fastify from "fastify";
 
 const fastify = Fastify({
-  logger: true,
+	logger: true,
 });
 
 fastify.get("/health-check", async (request, reply) => {
-  return { status: "ok" };
+	return { status: "ok" };
 });
 
 export default fastify;
