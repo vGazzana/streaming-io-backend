@@ -1,5 +1,6 @@
 import type { FastifyInstance, FastifyPluginOptions } from "fastify";
 import prisma from "../libs/prisma";
+import { signInPayload } from "../libs/jwt";
 
 const authenticationRoutes = {
   prefix: "/auth",
@@ -47,14 +48,12 @@ const authenticationRoutes = {
           });
         }
 
+        const jwt = signInPayload({ id: userExists.id, name: userExists.name, email: userExists.email });
+
         return {
           status: "success",
           data: {
-            user: {
-              id: userExists.id,
-              name: userExists.name,
-              email: userExists.email,
-            },
+            jwt,
           },
         };
       } catch (error) {
