@@ -1,1 +1,1 @@
-{ "recommendations": ["biomejs.biome", "ms-vscode.vscode-typescript-next"] }
+{ "recommendations": ["biomejs.biome", "ms-vscode.vscode-typescript-next", "Prisma.prisma"] }
