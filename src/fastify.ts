@@ -1,12 +1,12 @@
 import Fastify from "fastify";
-import onRequest from "./hooks/onRequest";
+import onResponse from "./hooks/onResponse";
 import { getAllRoutes } from "./routes";
 
 const fastify = Fastify({
 	logger: true,
 });
 
-fastify.addHook("onRequest", onRequest);
+fastify.addHook("onResponse", onResponse);
 
 for (const { prefix, routes } of getAllRoutes()) {
 	fastify.register(routes, { prefix });

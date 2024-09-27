@@ -3,7 +3,7 @@ import { validateToken } from "../libs/jwt";
 import { getAllPublicRoutes } from "../routes";
 
 const publicRoutes = getAllPublicRoutes();
-export default async function onRequest(
+export default async function preHandler(
 	request: FastifyRequest,
 	reply: FastifyReply,
 ) {
