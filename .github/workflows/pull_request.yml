@@ -1,0 +1,39 @@
+name: CI Pipeline
+
+# Quando rodar esse workflow
+on:
+  # Rodar no push e pull request para a branch main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    # O ambiente onde o workflow será executado
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checar o código da branch
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Instalar Node.js e configurar o ambiente
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20 # Ou a versão que você está usando
+
+      # 3. Instalar dependências do projeto
+      - name: Install dependencies
+        run: yarn install # Se estiver usando npm, troque por 'npm install'
+
+      # 4. Rodar Biome para verificar o código (Linter + Formatação)
+      - name: Run Biome (Lint and Format)
+        run: yarn biome check . # Ou 'npm run biome check' se estiver usando npm
+
+      # 5. Rodar os testes com Vitest
+      - name: Run tests
+        run: yarn test # Ou 'npm test' dependendo da configuração do seu projeto
