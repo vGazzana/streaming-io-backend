@@ -142,6 +142,42 @@ const authenticationRoutes = {
 				};
 			}
 		});
+		fastify.get("/me", async (request, reply) => {
+			try {
+				const { user } = request;
+
+				if (!user) {
+					return reply.status(401).send({
+						error: true,
+						message: "Unauthorized",
+						data: null,
+					});
+				}
+
+				return {
+					error: false,
+					data: {
+						user,
+					},
+				};
+			} catch (error) {
+				if (error instanceof Error)
+					return {
+						status: "error",
+						error: true,
+						message: error.message,
+						errorObj: { ...error },
+						data: null,
+					};
+				return {
+					status: "error",
+					error: true,
+					message: "An unexpected error occurred",
+					errorObj: error,
+					data: null,
+				};
+			}
+		});
 	},
 };
 
