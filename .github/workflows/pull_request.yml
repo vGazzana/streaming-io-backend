@@ -32,7 +32,7 @@ jobs:
 
       # 4. Rodar Biome para verificar o código (Linter + Formatação)
       - name: Run Biome (Lint and Format)
-        run: yarn biome check . # Ou 'npm run biome check' se estiver usando npm
+        run: yarn biome check # Ou 'npm run biome check' se estiver usando npm
 
       # 5. Rodar os testes com Vitest
       - name: Run tests
