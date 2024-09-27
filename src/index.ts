@@ -1,1 +1,3 @@
-console.log("hello world");
+import bootstrapServer from "./server";
+
+bootstrapServer();
