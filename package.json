@@ -21,6 +21,7 @@
   },
   "packageManager": "yarn@1.22.22",
   "dependencies": {
+    "@prisma/client": "^5.20.0",
     "fast-jwt": "^4.0.5",
     "fastify": "^5.0.0"
   }
