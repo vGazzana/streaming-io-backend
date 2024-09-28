@@ -8,15 +8,10 @@
 		"dev": "tsx --watch ./src",
 		"build": "tsc",
 		"start": "node dist/index.js",
-		"test": "vitest",
+		"test": "vitest run",
 		"lint": "biome lint --write ./src",
 		"format": "biome format ./src",
 		"prepare": "husky"
-	},
-	"lint-staged": {
-		"*": [
-			"biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true"
-		]
 	},
 	"dependencies": {
 		"@prisma/client": "^5.20.0",
@@ -27,7 +22,6 @@
 		"@biomejs/biome": "1.9.2",
 		"@types/node": "^22.7.3",
 		"husky": "^9.1.6",
-		"lint-staged": "^15.2.10",
 		"prisma": "^5.20.0",
 		"tsx": "^4.19.1",
 		"typescript": "^5.6.2",
