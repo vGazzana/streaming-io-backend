@@ -1,28 +1,36 @@
 {
-  "name": "streaming-io-backend",
-  "engines": {
-    "node": ">=20.14"
-  },
-  "scripts": {
-    "dev": "tsx --watch ./src",
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "test": "vitest",
-    "lint": "biome lint --write ./src",
-    "format": "biome format ./src"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.2",
-    "@types/node": "^22.7.3",
-    "prisma": "^5.20.0",
-    "tsx": "^4.19.1",
-    "typescript": "^5.6.2",
-    "vitest": "^2.1.1"
-  },
-  "packageManager": "yarn@1.22.22",
-  "dependencies": {
-    "@prisma/client": "^5.20.0",
-    "fast-jwt": "^4.0.5",
-    "fastify": "^5.0.0"
-  }
+	"name": "streaming-io-backend",
+	"engines": {
+		"node": ">=20.14"
+	},
+	"packageManager": "yarn@1.22.22",
+	"scripts": {
+		"dev": "tsx --watch ./src",
+		"build": "tsc",
+		"start": "node dist/index.js",
+		"test": "vitest",
+		"lint": "biome lint --write ./src",
+		"format": "biome format ./src",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"*": [
+			"biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true"
+		]
+	},
+	"dependencies": {
+		"@prisma/client": "^5.20.0",
+		"fast-jwt": "^4.0.5",
+		"fastify": "^5.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.2",
+		"@types/node": "^22.7.3",
+		"husky": "^9.1.6",
+		"lint-staged": "^15.2.10",
+		"prisma": "^5.20.0",
+		"tsx": "^4.19.1",
+		"typescript": "^5.6.2",
+		"vitest": "^2.1.1"
+	}
 }
